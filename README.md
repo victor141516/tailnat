@@ -10,7 +10,14 @@
 
 TailNAT turns a public Linux gateway into a selective front door for services running on Tailscale peers. Pick a public port, choose a node, and let TailNAT manage the matching IPv4 DNAT, forwarding, and return-path rules. No Tailscale API token required.
 
-![TailNAT dashboard with illustrative sample nodes and addresses](assets/dashboard-demo.jpg)
+![TailNAT visual forwarding graph with illustrative sample nodes and addresses](assets/dashboard-graph.png)
+
+<details>
+<summary>👆 See the controls for a paused forward</summary>
+
+![TailNAT port controls for a paused sample forward](assets/forward-details.png)
+
+</details>
 
 <sub>📸 Real dashboard, illustrative data. No production nodes or addresses are shown.</sub>
 

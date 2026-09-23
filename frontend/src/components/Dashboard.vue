@@ -4,7 +4,7 @@ import Button from 'primevue/button'
 import Dialog from 'primevue/dialog'
 import Message from 'primevue/message'
 import StatusHeader from './StatusHeader.vue'
-import ForwardTable from './ForwardTable.vue'
+import ForwardGraph from './forward-graph/ForwardGraph.vue'
 import ForwardDialog from './ForwardDialog.vue'
 import ObservedRules from './ObservedRules.vue'
 import { useDashboard } from '../composables/useDashboard'
@@ -65,10 +65,7 @@ async function confirmDelete() {
           </div>
           <Button icon="pi pi-plus" label="Add forward" :disabled="saving" @click="openCreate" />
         </div>
-        <p class="table-hint">Swipe across the table for destinations and actions <i class="pi pi-arrow-right" aria-hidden="true" /></p>
-        <div class="table-wrap">
-          <ForwardTable :forwards="forwards" :nodes="nodes" :busy="saving" @edit="openEdit" @toggle="toggle" @remove="pendingDelete = $event" />
-        </div>
+        <ForwardGraph :forwards="forwards" :nodes="nodes" :busy="saving" @edit="openEdit" @toggle="toggle" @remove="pendingDelete = $event" />
         <div class="card-footer">
           <span><i class="pi pi-circle-fill" aria-hidden="true" /> {{ status?.enabled_forwards ?? 0 }} active</span>
           <span>IPv4 forwarding · Tailnet destinations</span>
@@ -108,13 +105,11 @@ async function confirmDelete() {
 .card-heading h2 { margin: 0; font-size: 1.34rem; letter-spacing: -0.03em; }
 .card-heading h2 span { color: var(--muted); font-weight: 500; padding-left: 0.25rem; }
 .card-heading p:last-child { margin: 0.45rem 0 0; color: var(--muted); font-size: 0.83rem; }
-.table-wrap { overflow-x: auto; }
-.table-hint { display: none; margin: 0; padding: 0 1.3rem 0.8rem; color: var(--muted); font-size: 0.74rem; }
 .card-footer { display: flex; justify-content: space-between; gap: 1rem; padding: 0.9rem 1.6rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.78rem; }
 .card-footer i { color: #59dbac; font-size: 0.43rem; vertical-align: middle; margin-right: 0.32rem; }
 .page-footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; color: #78869e; font-size: 0.73rem; padding: 0.4rem 0.1rem 0; }
 .confirm-copy { color: var(--muted); line-height: 1.55; margin: 0.4rem 0 1.5rem; }
 .confirm-actions { display: flex; justify-content: flex-end; gap: 0.5rem; }
 @media (max-width: 760px) { .main { margin-top: 2.7rem; } .intro { flex-direction: column; align-items: stretch; } .edge-address { width: max-content; } }
-@media (max-width: 580px) { .app-shell { padding-top: 1.25rem; } .card-heading { align-items: flex-start; flex-direction: column; padding: 1.3rem; } .card-heading :deep(.p-button) { width: 100%; } .table-hint { display: block; } .card-footer { padding-inline: 1.3rem; } .page-footer { flex-direction: column; } }
+@media (max-width: 580px) { .app-shell { padding-top: 1.25rem; } .card-heading { align-items: flex-start; flex-direction: column; padding: 1.3rem; } .card-heading :deep(.p-button) { width: 100%; } .card-footer { padding-inline: 1.3rem; } .page-footer { flex-direction: column; } }
 </style>
