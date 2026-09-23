@@ -1,0 +1,11 @@
+{
+  "listen_port": 8787,
+  "public_interface": "eth0",
+  "tailscale_interface": "tailscale0",
+  "allowed_users": ["operator@example.com"],
+  "reserved_ports": [
+    { "protocol": "tcp", "port": 22 },
+    { "protocol": "udp", "port": 41641 }
+  ],
+  "forwards": []
+}
